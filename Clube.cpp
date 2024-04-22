@@ -25,3 +25,9 @@ vector<Time> Clube::getClubes() {
     return clubes;
 
 }
+
+Clube::~Clube() {
+
+    // TODO Auto-generated destructor stub
+    
+}
