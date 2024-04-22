@@ -11,8 +11,14 @@
 
 using namespace std;
 
-Time::Time(string _nome, int _vitorias, int _empates, int _derrotas, int _golsMarcados, int _golsSofridos) {
-	//TODO
+Time::Time(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos) {
+    this->nome = nome;
+    this->vitorias = vitorias;
+    this->empates = empates;
+    this->derrotas = derrotas;
+    this->golsMarcados = golsMarcados;
+    this->golsSofridos = golsSofridos;
+	
 }
 
 void Time::imprime(){
@@ -63,12 +69,15 @@ int Time::calcularPontos(){
 }
 
 int Time::calcularSaldoGols(){
-	//TODO
+	return (this->golsMarcados - this->golsSofridos);
+
 }
 
 void Time::atualizar(int gols1,int gols2){
-	//TODO
-}
+
+    this->golsMarcados += gols1;
+    this->golsSofridos += gols2;
+	}
 
 Time::~Time() {
 	// TODO Auto-generated destructor stub
