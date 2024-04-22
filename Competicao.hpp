@@ -17,7 +17,7 @@
 
 using namespace std;
 
-class Competicao {
+class Competicao : protected Time{
 	vector<shared_ptr<Time>> times;
 
 public:
@@ -38,6 +38,8 @@ public:
 	void atualizarTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int gols1, int gols2);
 
 	void ordenarTimes();
+
+	virtual void melhor();
 
 	virtual void imprimirTabela();
 

@@ -65,7 +65,7 @@ void Time::setVitorias(int vitorias) {
 }
 
 int Time::calcularPontos(){
-	//TODO
+	return (vitorias * 3 + empates);
 }
 
 int Time::calcularSaldoGols(){
@@ -73,10 +73,18 @@ int Time::calcularSaldoGols(){
 
 }
 
-void Time::atualizar(int gols1,int gols2){
+void Time::atualizar(int gols1, int gols2){
 
     this->golsMarcados += gols1;
     this->golsSofridos += gols2;
+
+    if (gols1 > gols2) {
+        this->vitorias++;
+    } else if (gols1 == gols2) {
+        this->empates++;
+    } else {
+        this->derrotas++;
+    }
 	}
 
 Time::~Time() {

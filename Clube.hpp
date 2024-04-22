@@ -26,8 +26,6 @@ class Clube : protected Time {
 
     vector<Clube> getClubes();
 
-    void 
-
 };
 
 #endif /* CLUBE_HPP_ */

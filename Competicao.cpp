@@ -95,4 +95,7 @@ void lerTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int &gols1, int 
 
 	time1 = make_shared<Time>(nome1, cidade1, _gols1, _gols2);
 	time2 = make_shared<Time>(nome2, cidade2, _gols2, _gols1);
+
 }
+
+
