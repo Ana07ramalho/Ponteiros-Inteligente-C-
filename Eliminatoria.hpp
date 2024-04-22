@@ -1,0 +1,4 @@
+#ifndef ELIMINATORIA_HPP
+#define ELIMINATORIA_HPP
+
+#endif /* ELIMINATORIA_HPP */
