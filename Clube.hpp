@@ -9,7 +9,7 @@
 using namespace std;
 
 
-class Clube : protected Time {
+class Clube : public Time {
 
     protected:
 

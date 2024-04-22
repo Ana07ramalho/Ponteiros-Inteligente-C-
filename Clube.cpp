@@ -26,7 +26,7 @@ void Clube::setCidade(string cidade) {
 
 }
 
-vector<Time> Clube::getClubes() {
+    vector<Clube> Clube::getClubes() {
 
     return clubes;
 

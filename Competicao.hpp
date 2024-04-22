@@ -17,7 +17,7 @@
 
 using namespace std;
 
-class Competicao : protected Time{
+class Competicao : public Time{
 	vector<shared_ptr<Time>> times;
 
 public:
