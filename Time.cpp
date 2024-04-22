@@ -5,7 +5,11 @@
  *      Author: juan
  */
 
+
+#include <iostream>
 #include "Time.hpp"
+
+using namespace std;
 
 Time::Time(string _nome, int _vitorias, int _empates, int _derrotas, int _golsMarcados, int _golsSofridos) {
 	//TODO
@@ -46,20 +50,8 @@ int Time::getGolsSofridos() const {
 	return golsSofridos;
 }
 
-void Time::setGolsSofridos(int golSofridos) {
-	this->golsSofridos = golsSofridos;
-}
-
-const string& Time::getNome() const {
-	return nome;
-}
-
-void Time::setNome(const string &nome) {
-	this->nome = nome;
-}
-
-int Time::getVitorias() const {
-	return vitorias;
+const string& Time::getNome(){
+    return nome;
 }
 
 void Time::setVitorias(int vitorias) {

@@ -5,8 +5,8 @@
  *      Author: juan
  */
 
-#ifndef COMPETICAO_H_
-#define COMPETICAO_H_
+#ifndef COMPETICAO_HPP_
+#define COMPETICAO_HPP_
 
 #include <iostream>
 #include <vector>
