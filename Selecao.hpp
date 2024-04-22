@@ -13,11 +13,15 @@ class Selecao : protected Time {
 
     protected:
 
-    vector<Time> selecao;
+    vector<Time> selecoes;
 
     public:
 
     Selecao(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos) ;
+
+    vector<Time> getSelecoes();
+    
+    ~Selecao();
     
 };
 
