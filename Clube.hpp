@@ -24,8 +24,8 @@ class Clube : protected Time {
 
     void setCidade(string cidade);
 
-    vector<Clube> getClubes();
-    
+    vector<Time> getClubes();
+
 };
 
 #endif /* CLUBE_HPP_ */
