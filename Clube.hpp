@@ -14,7 +14,7 @@ class Clube : protected Time {
     protected:
 
     string cidade;
-    vector<Clube> clubes;
+    vector<Time> clubes;
 
     public:
 
@@ -25,6 +25,8 @@ class Clube : protected Time {
     void setCidade(string cidade);
 
     vector<Clube> getClubes();
+
+    ~Clube();
 
 };
 
