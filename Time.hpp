@@ -20,41 +20,41 @@ class Time{
 
     public:
 
-Time(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos) ;
+    Time(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos) ;
 
-void imprime();
+    void imprime();
 
-int getDerrotas() const;
+    int getDerrotas() const;
 
-void setDerrotas(int derrotas);
+    void setDerrotas(int derrotas);
 
-int getEmpates() const;
+    int getEmpates() const;
 
-void setEmpates(int empates);
+    void setEmpates(int empates);
 
-int getGolsMarcados() const;
+    int getGolsMarcados() const;
 
-void setGolsMarcados(int golsMarcados);
+    void setGolsMarcados(int golsMarcados);
 
-int getGolsSofridos() const;
+    int getGolsSofridos() const;
 
-void setGolsSofridos(int golSofridos);
+    void setGolsSofridos(int golSofridos);
 
-const string& getNome();
+    const string& getNome();
 
-void setNome(const string &nome);
+    void setNome(const string &nome);
 
-int getVitorias() const;
+    int getVitorias() const;
 
-void setVitorias(int vitorias);
+    void setVitorias(int vitorias);
 
-int calcularPontos();
+    int calcularPontos();
 
-int calcularSaldoGols();
+    int calcularSaldoGols();
 
-void atualizar(int gols1,int gols2);
+    void atualizar(int gols1,int gols2);
 
-~Time();
+    ~Time();
 
 };
 
