@@ -21,6 +21,15 @@ Time::Time(string nome, int vitorias, int empates, int derrotas, int golsMarcado
 	
 }
 
+Time::Time() {
+    this->nome = "";
+    this->vitorias = 0;
+    this->empates = 0;
+    this->derrotas = 0;
+    this->golsMarcados = 0;
+    this->golsSofridos = 0;
+}
+
 void Time::imprime(){
 
 	printf("%20s\t%3d\t%3d\t%3d\t%3d\t%3d\t%3d\t%3d\t%3d\n",nome.c_str(), calcularPontos(), vitorias + empates + derrotas, vitorias, empates, derrotas, golsMarcados, golsSofridos, calcularSaldoGols());

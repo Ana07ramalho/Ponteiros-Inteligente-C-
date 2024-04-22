@@ -8,6 +8,12 @@ Clube::Clube(string nome, int vitorias, int empates, int derrotas, int golsMarca
 
 }
 
+Clube::Clube() : Time() {
+
+    this -> cidade = "";
+
+}
+
 string Clube::getCidade() {
 
     return cidade;

@@ -28,14 +28,14 @@ void Brasileirao::lerTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int
 void Brasileirao::melhor() {
 
     int max = 0;
-    vector <Clube> melhorTime;
+    shared_ptr<Clube> melhorTime; // Change to a pointer
 
     for (int i = 0; i < clubes.size(); i++) {
         if (clubes[i]->calcularPontos() > max) {
             max = clubes[i]->calcularPontos();
-            melhorTime = clubes[i];
+            melhorTime = clubes[i]; // Assign the pointer
         }
     }
     
-    cout << "Melhor do Brasileirao" << endl << "Club:" << melhorTime.getNome() << ", Cidade" << melhorTime.getCidade() << endl;
+    cout << "Melhor do Brasileirao" << endl << "Club:" << melhorTime->getNome() << ", Cidade" << melhorTime->getCidade() << endl; // Access the pointer using '->'
 }

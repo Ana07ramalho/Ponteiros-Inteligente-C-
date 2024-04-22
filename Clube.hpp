@@ -19,6 +19,7 @@ class Clube : protected Time {
     public:
 
     Clube(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos, string cidade) ;
+    Clube();
 
     string getCidade();
 

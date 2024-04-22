@@ -20,7 +20,8 @@ class Time{
 
     public:
 
-    Time(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos) ;
+    Time(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos);
+    Time();
 
     void imprime();
 
