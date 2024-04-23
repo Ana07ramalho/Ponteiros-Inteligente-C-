@@ -14,14 +14,13 @@ class Clube : public Time {
     protected:
 
     string cidade;
-    vector<Time> clubes;
 
     public:
 
-    Clube(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos, string cidade) ;
+    Clube(string nome, string cidade, int golsMarcados, int golsSofridos);
     Clube();
 
-    string getCidade();
+    string getCidade() const;
 
     void setCidade(string cidade);
 

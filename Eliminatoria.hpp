@@ -3,29 +3,22 @@
 
 #include <iostream>
 #include <vector>
-
 #include "Competicao.hpp"
-#include "Time.hpp"
 
 using namespace std;
 
 class Eliminatoria : public Competicao {
+    vector<shared_ptr<Time>> selecoes;
 
-    protected:
-
-    shared_ptr<Time> Selecoes;
-
-    public:
-
-    Eliminatoria();
+public:
+    Eliminatoria(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos);
     ~Eliminatoria();
 
-    Eliminatoria(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos, shared_ptr<Time> Selecoes);
+    void lerTimes(shared_ptr<Time>& time1, shared_ptr<Time>& time2, int& gols1, int& gols2) override;
 
-    void lerTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int &gols1, int &gols2);
-      
+    void imprimirTabela() override;
 
+    void melhor();
 };
-
 
 #endif /* ELIMINATORIA_HPP */

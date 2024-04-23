@@ -22,7 +22,7 @@ public:
     Brasileirao();
     virtual ~Brasileirao();
 
-    void lerTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int &gols1, int &gols2);
+    void lerTimes(shared_ptr<Clube> &time1, shared_ptr<Clube> &time2, int &gols1, int &gols2);
 
     void imprimirTabela();
 

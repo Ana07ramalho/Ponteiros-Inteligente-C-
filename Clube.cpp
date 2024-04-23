@@ -1,39 +1,23 @@
 #include "Clube.hpp"
+#include "Time.hpp"
 
-using namespace std;
-
-Clube::Clube(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos, string cidade) : Time(nome, vitorias, empates, derrotas, golsMarcados, golsSofridos) {
-
-    this -> cidade = cidade;
-
+Clube::Clube(string nome, string cidade, int golsMarcados, int golsSofridos) : Time(nome, golsMarcados, golsSofridos) {
+    this->cidade = cidade;
 }
 
+// Método para inicializar um objeto Clube com valores padrão
 Clube::Clube() : Time() {
+    this->cidade = "";
+};
 
-    this -> cidade = "";
-
-}
-
-string Clube::getCidade() {
-
+string Clube::getCidade() const {
     return cidade;
-
-}
+};
 
 void Clube::setCidade(string cidade) {
-
-    this -> cidade = cidade;
-
-}
-
-    vector<Clube> Clube::getClubes() {
-
-    return clubes;
-
-}
+    this->cidade = cidade;
+};
 
 Clube::~Clube() {
-
-    // TODO Auto-generated destructor stub
-    
-}
+    // Destrutor vazio, pois não há nada a liberar
+};

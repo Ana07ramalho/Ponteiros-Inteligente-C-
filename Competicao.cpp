@@ -83,19 +83,3 @@ void Competicao::setTimes(const vector<shared_ptr<Time> > &times) {
 	this->times = times;
 };
 
-void lerTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int &gols1, int &gols2){
-
-	string nome1, nome2;
-	string cidade1, cidade2;
-	int _gols1, _gols2;
-
-	cin >> nome1 >> cidade1 >> _gols1;
-	cin.ignore(); // Ignore the 'x' character
-	cin >> _gols2 >> cidade2 >> nome2;
-
-	time1 = make_shared<Time>(nome1, cidade1, _gols1, _gols2);
-	time2 = make_shared<Time>(nome2, cidade2, _gols2, _gols1);
-
-}
-
-

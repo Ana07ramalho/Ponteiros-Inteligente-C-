@@ -46,6 +46,7 @@ public:
 
 	virtual void lerTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int &gols1, int &gols2) = 0;
 
+
 	//TODO pure virtual methods para ler os dados dos times, e outro para  mostrar o melhor
 };
 

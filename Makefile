@@ -8,7 +8,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall
 
 # Arquivos fonte
-SRCS = main.cpp
+SRCS = main.cpp Time.cpp Clube.cpp  Selecao.cpp Competicao.cpp Eliminatoria.cpp Brasileirao.cpp
 
 # Arquivos objeto gerados a partir dos arquivos fonte
 OBJS = $(SRCS:.cpp=.o)
