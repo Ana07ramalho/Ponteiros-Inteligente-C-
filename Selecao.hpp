@@ -7,7 +7,7 @@
 class Selecao : public Time {
 
 public:
-    Selecao(std::string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos);
+    Selecao(std::string nome, int golsMarcados, int golsSofridos);
     ~Selecao(); // Destrutor
 
 };

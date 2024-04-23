@@ -23,6 +23,7 @@ void Eliminatoria::lerTimes(shared_ptr<Time>& time1, shared_ptr<Time>& time2, in
         // Adiciona time1 às seleções se não encontrado
         time1 = make_shared<Time>(nome1, gols1, gols2); // Cria um novo time com valores padrão
         Competicao::addTime(time1);
+        selecoes.push_back(time1); // Adiciona time1 à lista de seleções
     } else {
         time1 = *it1;
     }
@@ -35,6 +36,7 @@ void Eliminatoria::lerTimes(shared_ptr<Time>& time1, shared_ptr<Time>& time2, in
         // Adiciona time2 às seleções se não encontrado
         time2 = make_shared<Time>(nome2, gols2, gols1); // Cria um novo time com valores padrão
         Competicao::addTime(time2);
+        selecoes.push_back(time2); // Adiciona time2 à lista de seleções
     } else {
         time2 = *it2;
     }
