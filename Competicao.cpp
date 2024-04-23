@@ -13,9 +13,9 @@
 using namespace std;
 
 
-Competicao::Competicao() {
-	// TODO Auto-generated constructor stub
-
+Competicao::Competicao(){
+	
+	// TODO Auto-generated constructor st
 };
 
 Competicao::~Competicao() {

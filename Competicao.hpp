@@ -23,6 +23,7 @@ class Competicao : public Time{
 public:
 
 	Competicao();
+	Competicao(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos);
 	virtual ~Competicao();
 
 	const vector<shared_ptr<Time> >& getTimes() const;
