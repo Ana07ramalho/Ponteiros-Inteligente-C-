@@ -1,4 +1,5 @@
 #include "Brasileirao.hpp"
+#include "Competicao.hpp"
 #include "Clube.hpp"
 #include "Time.hpp"
 #include <iomanip>
