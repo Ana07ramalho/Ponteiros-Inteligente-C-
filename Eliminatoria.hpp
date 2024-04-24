@@ -11,14 +11,14 @@ class Eliminatoria : public Competicao {
     vector<shared_ptr<Time>> selecoes;
 
 public:
-    Eliminatoria(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos);
+    Eliminatoria();
     ~Eliminatoria();
 
     void lerTimes(shared_ptr<Time>& time1, shared_ptr<Time>& time2, int& gols1, int& gols2) override;
 
     void imprimirTabela() override;
 
-    void melhor();
+    virtual void melhor() override;
 };
 
 #endif /* ELIMINATORIA_HPP */

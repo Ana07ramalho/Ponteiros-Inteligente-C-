@@ -1,5 +1,5 @@
-#ifndef TIMES_HPP_
-#define TIMES_HPP_
+#ifndef TIMES_HPP
+#define TIMES_HPP
 
 #include <string>
 #include <iostream>
@@ -38,5 +38,5 @@ public:
 
 };
 
-#endif /* TIMES_HPP_ */
+#endif /* TIMES_HPP */
 

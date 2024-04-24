@@ -6,6 +6,7 @@
 #include "Competicao.hpp"
 #include "Eliminatoria.hpp"
 #include "Time.hpp"
+#include "Clube.hpp"
 
 using namespace std;
 
@@ -13,8 +14,11 @@ int main() {
 
     vector<shared_ptr<Competicao>> competicoes;
 
-    competicoes.push_back(make_shared<Brasileirao>());
-    competicoes.push_back(make_shared<Eliminatoria>());
+    shared_ptr<Competicao> brasileiraoPtr(new Brasileirao());
+    shared_ptr<Competicao> eliminatoiraPtr(new Eliminatoria());
+
+    competicoes.push_back(brasileiraoPtr);
+    competicoes.push_back(eliminatoiraPtr);
 
     int njogos;
     shared_ptr<Time> time1, time2;

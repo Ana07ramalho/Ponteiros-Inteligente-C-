@@ -5,8 +5,8 @@
  *      Author: juan
  */
 
-#ifndef COMPETICAO_HPP_
-#define COMPETICAO_HPP_
+#ifndef COMPETICAO_HPP
+#define COMPETICAO_HPP
 
 #include <iostream>
 #include <vector>
@@ -17,7 +17,7 @@
 
 using namespace std;
 
-class Competicao : public Time{
+class Competicao {
 	vector<shared_ptr<Time>> times;
 
 public:
@@ -40,7 +40,7 @@ public:
 
 	void ordenarTimes();
 
-	virtual void melhor();
+	virtual void melhor() = 0;
 
 	virtual void imprimirTabela();
 
@@ -50,4 +50,4 @@ public:
 	//TODO pure virtual methods para ler os dados dos times, e outro para  mostrar o melhor
 };
 
-#endif /* COMPETICAO_H_ */
+#endif /* COMPETICAO_H */

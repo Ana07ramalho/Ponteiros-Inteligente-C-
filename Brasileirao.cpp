@@ -11,18 +11,6 @@ Brasileirao::~Brasileirao() {
     // TODO Auto-generated destructor stub
 }
 
-void Brasileirao::lerTimes(shared_ptr<Clube> &time1, shared_ptr<Clube> &time2, int &gols1, int &gols2) {
-    string nome1, nome2;
-    string cidade1, cidade2;
-    int _gols1, _gols2;
-
-    cin >> nome1 >> cidade1 >> _gols1;
-    cin.ignore(); // Ignore the 'x' character
-    cin >> _gols2 >> cidade2 >> nome2;
-
-    time1 = make_shared<Clube>(nome1, cidade1, _gols1, _gols2);
-    time2 = make_shared<Clube>(nome2, cidade2, _gols2, _gols1);
-}
 
 void Brasileirao::melhor() {
     shared_ptr<Clube> melhorTime;
@@ -74,10 +62,24 @@ void Brasileirao::melhor() {
 
  // Include the <iomanip> header to access std::setw
 
+void Brasileirao::lerTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int &gols1, int &gols2) {
+ 
+    string nome1, nome2;
+    string cidade1, cidade2;
+    int _gols1, _gols2;
+
+    cin >> nome1 >> cidade1 >> _gols1;
+    cin.ignore(); // Ignore the 'x' character
+    cin >> _gols2 >> cidade2 >> nome2;
+
+    time1 = make_shared<Clube>(nome1, cidade1, _gols1, _gols2);
+    time2 = make_shared<Clube>(nome2, cidade2, _gols2, _gols1);
+}
+
 void Brasileirao::imprimirTabela() {
-    std::cout <<  "Brasileirao" << std::endl;
+    std::cout << "Brasileirao" << std::endl;
     std::cout << std::setw(20) << "TIME" << "\tP\tJ\tV\tE\tD\tGP\tGC\tSG" << std::endl;
-    for (const auto& time : clubes) {
+    for (const auto& time : getTimes()) {
         std::cout << std::setw(20) << time->getNome() << "\t" << time->calcularPontos() << "\t"
                   << (time->getVitorias() + time->getEmpates() + time->getDerrotas()) << "\t"
                   << time->getVitorias() << "\t" << time->getEmpates() << "\t" << time->getDerrotas() << "\t"

@@ -1,5 +1,5 @@
-#ifndef SELECAO_HPP_
-#define SELECAO_HPP_
+#ifndef SELECAO_HPP
+#define SELECAO_HPP
 
 #include <string>
 #include "Time.hpp"
@@ -12,4 +12,4 @@ public:
 
 };
 
-#endif /* SELECAO_HPP_ */
+#endif /* SELECAO_HPP */

@@ -1,5 +1,5 @@
-#ifndef CLUBE_HPP_
-#define CLUBE_HPP_
+#ifndef CLUBE_HPP
+#define CLUBE_HPP
 
 #include <string>
 #include <vector>
@@ -30,4 +30,4 @@ class Clube : public Time {
 
 };
 
-#endif /* CLUBE_HPP_ */
+#endif /* CLUBE_HPP*/

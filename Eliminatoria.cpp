@@ -1,45 +1,19 @@
 #include "Eliminatoria.hpp"
+#include "Time.hpp"
+#include "Competicao.hpp"
 #include <iomanip> // Include the <iomanip> header to access std::setw
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-Eliminatoria::Eliminatoria(string nome, int vitorias, int empates, int derrotas, int golsMarcados, int golsSofridos)
-    : Competicao(nome, vitorias, empates, derrotas, golsMarcados, golsSofridos) {
-    // Inicializa a lista de seleções
-    selecoes = {};
-};
+Eliminatoria::Eliminatoria() {
+    // inicialize outros membros, se necessário
+}
+
 
 Eliminatoria::~Eliminatoria() {
     // Não é necessário implementar o destrutor, pois não há recursos a serem liberados explicitamente
-};
-
-void Eliminatoria::lerTimes(shared_ptr<Time>& time1, shared_ptr<Time>& time2, int& gols1, int& gols2) {
-    string nome1, nome2;
-    cin >> nome1;
-    auto it1 = Competicao::procurarTime(nome1); // Corrigindo o uso da função procurarTime
-    if (it1 == getTimes().end()) {
-        // Adiciona time1 às seleções se não encontrado
-        time1 = make_shared<Time>(nome1, gols1, gols2); // Cria um novo time com valores padrão
-        Competicao::addTime(time1);
-        selecoes.push_back(time1); // Adiciona time1 à lista de seleções
-    } else {
-        time1 = *it1;
-    }
-
-    cin >> gols1 >> gols2;
-
-    cin >> nome2;
-    auto it2 = Competicao::procurarTime(nome2); // Corrigindo o uso da função procurarTime
-    if (it2 == getTimes().end()) {
-        // Adiciona time2 às seleções se não encontrado
-        time2 = make_shared<Time>(nome2, gols2, gols1); // Cria um novo time com valores padrão
-        Competicao::addTime(time2);
-        selecoes.push_back(time2); // Adiciona time2 à lista de seleções
-    } else {
-        time2 = *it2;
-    }
 };
 
 void Eliminatoria::melhor() {
@@ -88,16 +62,43 @@ void Eliminatoria::melhor() {
     }
 };
 
+void Eliminatoria::lerTimes(shared_ptr<Time>& time1, shared_ptr<Time>& time2, int& gols1, int& gols2) {
+    string nome1, nome2;
+    cin >> nome1;
+    auto it1 = Competicao::procurarTime(nome1);
+    if (it1 == getTimes().end()) {
+        // Adiciona time1 às seleções se não encontrado
+        time1 = make_shared<Time>(nome1, gols1, gols2); // Criar um novo time com valores padrão
+        Competicao::addTime(time1);
+        selecoes.push_back(time1); // Adiciona time1 à lista de seleções
+    } else {
+        time1 = *it1;
+    }
 
+    cin >> gols1 >> gols2;
 
+    cin >> nome2;
+    auto it2 = Competicao::procurarTime(nome2);
+    if (it2 == getTimes().end()) {
+        // Adiciona time2 às seleções se não encontrado
+        time2 = make_shared<Time>(nome2, gols2, gols1); // Criar um novo time com valores padrão
+        Competicao::addTime(time2);
+        selecoes.push_back(time2); // Adiciona time2 à lista de seleções
+    } else {
+        time2 = *it2;
+    }
+}
 
 void Eliminatoria::imprimirTabela() {
-    std::cout <<  "Eliminatoria" << std::endl;
+    std::cout << "Eliminatoria" << std::endl;
     std::cout << std::setw(20) << "TIME" << "\tP\tJ\tV\tE\tD\tGP\tGC\tSG" << std::endl;
-    for (const auto& time : selecoes) {
+    for (const auto& time : getTimes()) {
         std::cout << std::setw(20) << time->getNome() << "\t" << time->calcularPontos() << "\t"
                   << (time->getVitorias() + time->getEmpates() + time->getDerrotas()) << "\t"
                   << time->getVitorias() << "\t" << time->getEmpates() << "\t" << time->getDerrotas() << "\t"
                   << time->getGolsMarcados() << "\t" << time->getGolsSofridos() << "\t" << time->calcularSaldoGols() << std::endl;
     }
-};
+}
+
+
+

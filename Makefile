@@ -5,7 +5,7 @@ TARGET = programa
 CXX = g++
 
 # Opções de compilação
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS = -std=c++17 -Wall
 
 # Arquivos fonte
 SRCS = main.cpp Time.cpp Clube.cpp  Selecao.cpp Competicao.cpp Eliminatoria.cpp Brasileirao.cpp
