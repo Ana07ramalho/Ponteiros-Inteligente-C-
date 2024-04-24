@@ -16,13 +16,13 @@ Brasileirao::~Brasileirao() {
 void Brasileirao::melhor() {
     shared_ptr<Clube> melhorTime;
 
-    int INT_MIN = 0;
+    int intMin = 0;
     
     // Inicializa as variáveis de comparação
-    int maxPontos = INT_MIN;
-    int maxVitorias = INT_MIN;
-    int maxSaldoGols = INT_MIN;
-    int maxGolsPro = INT_MIN;
+    int maxPontos = intMin;
+    int maxVitorias = intMin;
+    int maxSaldoGols = intMin;
+    int maxGolsPro = intMin;
     string nomeAlfabetico;
 
     // Percorre todos os clubes para encontrar o melhor time

@@ -19,13 +19,13 @@ Eliminatoria::~Eliminatoria() {
 void Eliminatoria::melhor() {
     shared_ptr<Time> melhorTime;
 
-    int INT_MIN = 0;
+    int intMin = 0;
     
     // Inicializa as variáveis de comparação
-    int maxPontos = INT_MIN;
-    int maxVitorias = INT_MIN;
-    int maxSaldoGols = INT_MIN;
-    int maxGolsPro = INT_MIN;
+    int maxPontos = intMin;
+    int maxVitorias = intMin;
+    int maxSaldoGols = intMin;
+    int maxGolsPro = intMin;
     string nomeAlfabetico;
 
     // Percorre todos os times para encontrar o melhor time
