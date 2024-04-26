@@ -33,7 +33,7 @@ public:
     void setVitorias(int vitorias);
     int calcularPontos() const; // Modificado para const
     int calcularSaldoGols() const; // Modificado para const
-    void atualizar(int gols1, int gols2);
+   virtual void atualizarTime(int gols1, int gols2) =0;
     ~Time(); // Destrutor
 
 };

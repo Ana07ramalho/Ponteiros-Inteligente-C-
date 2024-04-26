@@ -4,10 +4,13 @@
 #include <iomanip> // Include the <iomanip> header to access std::setw
 #include <string>
 #include <iostream>
+#include <memory>   
+#include <vector>
+#include "Selecao.hpp"
 
 using namespace std;
 
-Eliminatoria::Eliminatoria() {
+Eliminatoria::Eliminatoria() : selecoes() {
     // inicialize outros membros, se necessário
 }
 
@@ -16,87 +19,70 @@ Eliminatoria::~Eliminatoria() {
     // Não é necessário implementar o destrutor, pois não há recursos a serem liberados explicitamente
 };
 
-void Eliminatoria::melhor() {
-    shared_ptr<Time> melhorTime;
-
-    int intMin = 0;
-    
-    // Inicializa as variáveis de comparação
-    int maxPontos = intMin;
-    int maxVitorias = intMin;
-    int maxSaldoGols = intMin;
-    int maxGolsPro = intMin;
-    string nomeAlfabetico;
-
-    // Percorre todos os times para encontrar o melhor time
-    for (const auto& time : selecoes) {
-        if (time->calcularPontos() > maxPontos) {
-            // Se o time tem mais pontos, atualiza o melhor time
-            maxPontos = time->calcularPontos();
-            maxVitorias = time->getVitorias();
-            maxSaldoGols = time->calcularSaldoGols();
-            maxGolsPro = time->getGolsMarcados();
-            nomeAlfabetico = time->getNome();
-            melhorTime = time;
-        } else if (time->calcularPontos() == maxPontos) {
-            // Se o time tem os mesmos pontos, considera os critérios de desempate
-            if (time->getVitorias() > maxVitorias ||
-                (time->getVitorias() == maxVitorias && time->calcularSaldoGols() > maxSaldoGols) ||
-                (time->getVitorias() == maxVitorias && time->calcularSaldoGols() == maxSaldoGols && time->getGolsMarcados() > maxGolsPro) ||
-                (time->getVitorias() == maxVitorias && time->calcularSaldoGols() == maxSaldoGols && time->getGolsMarcados() == maxGolsPro && time->getNome() < nomeAlfabetico)) {
-                maxVitorias = time->getVitorias();
-                maxSaldoGols = time->calcularSaldoGols();
-                maxGolsPro = time->getGolsMarcados();
-                nomeAlfabetico = time->getNome();
-                melhorTime = time;
-            }
+void Eliminatoria::ordenarTimes() {
+    // Ordena o vetor de selecoes de acordo com os critérios de desempate
+    std::sort(selecoes.begin(), selecoes.end(), [](const std::shared_ptr<Selecao>& selecao1, const std::shared_ptr<Selecao>& selecao2) {
+        if (selecao1->calcularPontos() != selecao2->calcularPontos()) {
+            return selecao1->calcularPontos() > selecao2->calcularPontos();
+        } else if (selecao1->getVitorias() != selecao2->getVitorias()) {
+            return selecao1->getVitorias() > selecao2->getVitorias();
+        } else if (selecao1->calcularSaldoGols() != selecao2->calcularSaldoGols()) {
+            return selecao1->calcularSaldoGols() > selecao2->calcularSaldoGols();
+        } else if (selecao1->getGolsMarcados() != selecao2->getGolsMarcados()) {
+            return selecao1->getGolsMarcados() > selecao2->getGolsMarcados();
+        } else {
+            return selecao1->getNome() < selecao2->getNome();
         }
-    }
-
-    // Verifica se o melhor time foi encontrado e imprime suas informações
-    if (melhorTime != nullptr) {
-        cout << "Melhor da Eliminatoria" << endl
-             << "Pais: " << melhorTime->getNome() << endl;
-    } else {
-        cout << "Nenhum time encontrado." << endl;
-    }
+    });
 };
 
-void Eliminatoria::lerTimes(shared_ptr<Time>& time1, shared_ptr<Time>& time2, int& gols1, int& gols2) {
+void Eliminatoria::melhor() {
+
+    cout << endl << "Melhor da Eliminatoria" << endl;
+    cout << "Pais: " << selecoes.front()->getNome() << endl;
+}
+
+void Eliminatoria::lerTimes() {
+
     string nome1, nome2;
-    cin >> nome1;
-    auto it1 = Competicao::procurarTime(nome1);
-    if (it1 == getTimes().end()) {
-        // Adiciona time1 às seleções se não encontrado
-        time1 = make_shared<Time>(nome1, gols1, gols2); // Criar um novo time com valores padrão
-        Competicao::addTime(time1);
-        selecoes.push_back(time1); // Adiciona time1 à lista de seleções
-    } else {
-        time1 = *it1;
+    int _gols1, _gols2;
+
+    char x;
+
+    cin >> nome1 >> _gols1;
+    cin >> x;
+    cin >> _gols2 >> nome2;
+
+    procurarInsertarTime(nome1, _gols1, _gols2);
+    procurarInsertarTime(nome2, _gols2, _gols1);
+
+
+}
+
+void Eliminatoria::procurarInsertarTime(string nome, int gol1, int gol2) {
+    bool encontrado = false;
+    for (auto it = selecoes.begin(); it != selecoes.end(); ++it) {
+        auto selecao = *it;
+        if (selecao->getNome() == nome) {
+            selecao->atualizarTime(gol1, gol2);
+            encontrado = true;
+            break;
+        }
     }
-
-    cin >> gols1 >> gols2;
-
-    cin >> nome2;
-    auto it2 = Competicao::procurarTime(nome2);
-    if (it2 == getTimes().end()) {
-        // Adiciona time2 às seleções se não encontrado
-        time2 = make_shared<Time>(nome2, gols2, gols1); // Criar um novo time com valores padrão
-        Competicao::addTime(time2);
-        selecoes.push_back(time2); // Adiciona time2 à lista de seleções
-    } else {
-        time2 = *it2;
+    if (!encontrado) {
+        std::shared_ptr<Selecao> novaSelecao(new Selecao(nome, gol1, gol2));
+        selecoes.push_back(novaSelecao); // Adiciona no final do vetor
     }
 }
 
 void Eliminatoria::imprimirTabela() {
     std::cout << "Eliminatoria" << std::endl;
     std::cout << std::setw(20) << "TIME" << "\tP\tJ\tV\tE\tD\tGP\tGC\tSG" << std::endl;
-    for (const auto& time : getTimes()) {
-        std::cout << std::setw(20) << time->getNome() << "\t" << time->calcularPontos() << "\t"
-                  << (time->getVitorias() + time->getEmpates() + time->getDerrotas()) << "\t"
-                  << time->getVitorias() << "\t" << time->getEmpates() << "\t" << time->getDerrotas() << "\t"
-                  << time->getGolsMarcados() << "\t" << time->getGolsSofridos() << "\t" << time->calcularSaldoGols() << std::endl;
+    for (const auto& selecoes : selecoes) {
+        std::cout << std::setw(20) << selecoes->getNome() << "\t" << selecoes->calcularPontos() << "\t"
+                  << (selecoes->getVitorias() + selecoes->getEmpates() + selecoes->getDerrotas()) << "\t"
+                  << selecoes->getVitorias() << "\t" << selecoes->getEmpates() << "\t" << selecoes->getDerrotas() << "\t"
+                  << selecoes->getGolsMarcados() << "\t" << selecoes->getGolsSofridos() << "\t" << selecoes->calcularSaldoGols() << std::endl;
     }
 }
 

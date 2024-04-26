@@ -1,0 +1,26 @@
+12
+Bolivar LaPaz	0 x 0	BocaJuniors BuenosAires
+Cienciano Cusco	1 x 2	Toluca Toluca
+Toluca Toluca	1 x 2	Bolivar LaPaz
+BocaJuniors BuenosAires	1 x 0	Cienciano Cusco
+Cienciano Cusco	5 x 1	Bolivar LaPaz
+Toluca Toluca	2 x 0	BocaJuniors BuenosAires
+BocaJuniors BuenosAires	3 x 0	Toluca Toluca
+Bolivar LaPaz	2 x 3	Cienciano Cusco
+Cienciano Cusco	3 x 0	BocaJuniors BuenosAires
+Bolivar LaPaz	0 x 2	Toluca Toluca
+BocaJuniors BuenosAires	7 x 0	Bolivar LaPaz
+Toluca Toluca	3 x 0	Cienciano Cusco
+12
+Uruguai	3 x 0	Argentina
+Colombia	0 x 1	Brasil
+Brasil	1 x 0	Uruguai
+Argentina	3 x 2	Colombia
+Brasil	3 x 0	Argentina
+Colombia	1 x 2	Uruguai
+Argentina	1 x 2	Brasil
+Uruguai	3 x 0	Colombia
+Uruguai	0 x 2	Brasil
+Colombia	0 x 2	Argentina
+Argentina	3 x 0	Uruguai
+Brasil	3 x 0	Colombia

@@ -22,9 +22,15 @@ public:
     Brasileirao();
     virtual ~Brasileirao();
 
-    void lerTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int &gols1, int &gols2);
+    void procurarInsertarTime(string nome, string cidade, int gol1, int gol2); 
+
+    void atualizarTimes(int gols1, int gols2);
+
+    virtual void lerTimes() override;
 
     virtual void melhor() override;
+
+    virtual void ordenarTimes() override;
 
     virtual void imprimirTabela() override;
 

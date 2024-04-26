@@ -1,0 +1,31 @@
+24
+SaoJose PortoAlegre 	0 x 1 	Gremio PortoAlegre 
+Internacional PortoAlegre 	0 x 0 	NovoHamburgo NovoHamburgo 
+Guarany Bage 	1 x 0 	Gloria Vacaria 
+Veranopolis Veranopolis 	1 x 3 	Juventude Caxias
+Gaucho PassoFundo 	0 x 1 	Ulbra JiParana 
+Esportivo BentoGoncalves 	2 x 1 	GuaraniVA VenancioAires 
+Caxias Caxias 	3 x 1 	SaoJoseCS PortoAlegre
+15deNovembro CampoBom 	2 x 2 	BrasilRS Pelotas 
+Gremio PortoAlegre 	4 x 0 	15deNovembro CampoBom 
+Gloria Vacaria 	1 x 1 	SantaCruz Recife 
+Juventude Caxias  	2 x 1 	Guarany Bage 
+NovoHamburgo NovoHamburgo 	1 x 1 	Veranopolis Veranopolis 
+SaoLuiz Ijui 	3 x 2 	Esportivo BentoGoncalves 
+GuaraniVA VenancioAires 	1 x 3 	Caxias Caxias 
+SaoJoseCS PortoAlegre	2 x 1 	SaoJose PortoAlegre 
+Ulbra JiParana 	3 x 1 	Internacional PortoAlegre 
+Gremio PortoAlegre 	3 x 0 	SaoLuiz Ijui 
+SantaCruz Recife 	3 x 1 	Internacional PortoAlegre 
+Ulbra JiParana 	2 x 1 	Juventude Caxias 
+Gloria Vacaria 	3 x 3 	Gaucho PassoFundo 
+NovoHamburgo NovoHamburgo 	2 x 3 	Guarany Bage 
+BrasilRS Pelotas 	0 x 1 	Esportivo BentoGoncalves 
+Caxias Caxias 	3 x 0 	15deNovembro CampoBom 
+GuaraniVA VenancioAires 	2 x 1 	SaoJose PortoAlegre
+5
+Paraguai  0x0  Brasil
+Uruguai  1x2  Colombia
+Colombia  1x1  Uruguai
+Brasil  4x0  Paraguai
+Colombia  4x0  Brasil

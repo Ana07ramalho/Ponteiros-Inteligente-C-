@@ -4,19 +4,22 @@
 #include <iostream>
 #include <vector>
 #include "Competicao.hpp"
+#include "Selecao.hpp"
 
 using namespace std;
 
 class Eliminatoria : public Competicao {
-    vector<shared_ptr<Time>> selecoes;
+    vector<shared_ptr<Selecao>> selecoes;
 
 public:
     Eliminatoria();
     ~Eliminatoria();
 
-    void lerTimes(shared_ptr<Time>& time1, shared_ptr<Time>& time2, int& gols1, int& gols2) override;
-
+    void lerTimes() override;
+    void procurarInsertarTime(string nome, int gol1, int gol2); 
     void imprimirTabela() override;
+
+    void ordenarTimes() override;
 
     virtual void melhor() override;
 };

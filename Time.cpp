@@ -75,17 +75,6 @@ int Time::calcularSaldoGols() const {
     return (this->golsMarcados - this->golsSofridos);
 };
 
-void Time::atualizar(int gols1, int gols2) {
-    this->golsMarcados += gols1;
-    this->golsSofridos += gols2;
-    if (gols1 > gols2) {
-        this->vitorias++;
-    } else if (gols1 == gols2) {
-        this->empates++;
-    } else {
-        this->derrotas++;
-    }
-};
 
 Time::~Time() {
     // Destrutor vazio, pois não há nada a liberar

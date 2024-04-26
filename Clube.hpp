@@ -20,6 +20,8 @@ class Clube : public Time {
     Clube(string nome, string cidade, int golsMarcados, int golsSofridos);
     Clube();
 
+    virtual void atualizarTime(int gols1, int gols2) override; 
+
     string getCidade() const;
 
     void setCidade(string cidade);

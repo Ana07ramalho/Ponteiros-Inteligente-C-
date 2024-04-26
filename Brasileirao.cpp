@@ -3,9 +3,9 @@
 #include "Clube.hpp"
 #include "Time.hpp"
 #include <iomanip>
+#include <iostream>
 
-Brasileirao::Brasileirao() {
-    // TODO Auto-generated constructor stub
+Brasileirao::Brasileirao() : clubes() {
 }
 
 Brasileirao::~Brasileirao() {
@@ -13,77 +13,79 @@ Brasileirao::~Brasileirao() {
 }
 
 
+void Brasileirao::ordenarTimes() {
+    // Ordena o vetor clubes de acordo com os critérios
+    std::sort(clubes.begin(), clubes.end(), [](const std::shared_ptr<Clube>& clube1, const std::shared_ptr<Clube>& clube2) {
+        // Compara os pontos
+        if (clube1->calcularPontos() != clube2->calcularPontos()) {
+            return clube1->calcularPontos() > clube2->calcularPontos();
+        }
+        // Compara as vitórias
+        if (clube1->getVitorias() != clube2->getVitorias()) {
+            return clube1->getVitorias() > clube2->getVitorias();
+        }
+        // Compara o saldo de gols
+        if (clube1->calcularSaldoGols() != clube2->calcularSaldoGols()) {
+            return clube1->calcularSaldoGols() > clube2->calcularSaldoGols();
+        }
+        // Compara os gols marcados
+        if (clube1->getGolsMarcados() != clube2->getGolsMarcados()) {
+            return clube1->getGolsMarcados() > clube2->getGolsMarcados();
+        }
+        // Compara os nomes em ordem alfabética
+        return clube1->getNome() < clube2->getNome();
+    });
+
+}
+
 void Brasileirao::melhor() {
-    shared_ptr<Clube> melhorTime;
+    cout << endl  << "Melhor do Brasileirao" << endl;
+    cout << "Club: " << clubes.front()->getNome() << ", Cidade: " << clubes.front()->getCidade() << endl;
 
-    int intMin = 0;
-    
-    // Inicializa as variáveis de comparação
-    int maxPontos = intMin;
-    int maxVitorias = intMin;
-    int maxSaldoGols = intMin;
-    int maxGolsPro = intMin;
-    string nomeAlfabetico;
+}
 
-    // Percorre todos os clubes para encontrar o melhor time
-    for (const auto& clube : clubes) {
-        if (clube->calcularPontos() > maxPontos) {
-            // Se o time tem mais pontos, atualiza o melhor time
-            maxPontos = clube->calcularPontos();
-            maxVitorias = clube->getVitorias();
-            maxSaldoGols = clube->calcularSaldoGols();
-            maxGolsPro = clube->getGolsMarcados();
-            nomeAlfabetico = clube->getNome();
-            melhorTime = clube;
-        } else if (clube->calcularPontos() == maxPontos) {
-            // Se o time tem os mesmos pontos, considera os critérios de desempate
-            if (clube->getVitorias() > maxVitorias ||
-                (clube->getVitorias() == maxVitorias && clube->calcularSaldoGols() > maxSaldoGols) ||
-                (clube->getVitorias() == maxVitorias && clube->calcularSaldoGols() == maxSaldoGols && clube->getGolsMarcados() > maxGolsPro) ||
-                (clube->getVitorias() == maxVitorias && clube->calcularSaldoGols() == maxSaldoGols && clube->getGolsMarcados() == maxGolsPro && clube->getNome() < nomeAlfabetico)) {
-                maxVitorias = clube->getVitorias();
-                maxSaldoGols = clube->calcularSaldoGols();
-                maxGolsPro = clube->getGolsMarcados();
-                nomeAlfabetico = clube->getNome();
-                melhorTime = clube;
-            }
+void Brasileirao::lerTimes() {
+
+    string nome1, cidade1, nome2, cidade2;
+    int gols1, gols2;
+
+    cin >> nome1 >> cidade1 >> gols1;
+    char x;
+    cin >> x; // Ler o caractere 'x'
+    cin >> gols2 >> nome2 >> cidade2;
+
+    procurarInsertarTime(nome1, cidade1, gols1, gols2);
+    procurarInsertarTime(nome2, cidade2, gols2, gols1);
+
+
+}
+
+void Brasileirao::procurarInsertarTime(string nome, string cidade, int gol1, int gol2) {
+    bool encontrado = false;
+    for (auto it = clubes.begin(); it != clubes.end(); ++it) {
+        auto clube = *it;
+        if (clube->getNome() == nome) {
+            clube->atualizarTime(gol1, gol2);
+            encontrado = true;
+            break;
         }
     }
-
-    // Verifica se o melhor time foi encontrado e imprime suas informações
-    if (melhorTime != nullptr) {
-        cout << "Melhor do Brasileirao" << endl
-             << "Clube: " << melhorTime->getNome() << ", "
-             << "Cidade: " << melhorTime->getCidade() << endl;
-    } else {
-        cout << "Nenhum time encontrado." << endl;
+    if (!encontrado) {
+        std::shared_ptr<Clube> novoClube(new Clube(nome, cidade, gol1, gol2));
+        clubes.push_back(novoClube); // Adiciona no final do vetor
     }
 }
 
-
- // Include the <iomanip> header to access std::setw
-
-void Brasileirao::lerTimes(shared_ptr<Time> &time1, shared_ptr<Time> &time2, int &gols1, int &gols2) {
- 
-    string nome1, nome2;
-    string cidade1, cidade2;
-    int _gols1, _gols2;
-
-    cin >> nome1 >> cidade1 >> _gols1;
-    cin.ignore(); // Ignore the 'x' character
-    cin >> _gols2 >> cidade2 >> nome2;
-
-    time1 = make_shared<Clube>(nome1, cidade1, _gols1, _gols2);
-    time2 = make_shared<Clube>(nome2, cidade2, _gols2, _gols1);
-}
 
 void Brasileirao::imprimirTabela() {
     std::cout << "Brasileirao" << std::endl;
     std::cout << std::setw(20) << "TIME" << "\tP\tJ\tV\tE\tD\tGP\tGC\tSG" << std::endl;
-    for (const auto& time : getTimes()) {
-        std::cout << std::setw(20) << time->getNome() << "\t" << time->calcularPontos() << "\t"
-                  << (time->getVitorias() + time->getEmpates() + time->getDerrotas()) << "\t"
-                  << time->getVitorias() << "\t" << time->getEmpates() << "\t" << time->getDerrotas() << "\t"
-                  << time->getGolsMarcados() << "\t" << time->getGolsSofridos() << "\t" << time->calcularSaldoGols() << std::endl;
+    for (const auto& clube : clubes) {
+        std::cout << std::setw(20) << clube->getNome() << "\t" << clube->calcularPontos() << "\t"
+                  << (clube->getVitorias() + clube->getEmpates() + clube->getDerrotas()) << "\t"
+                  << clube->getVitorias() << "\t" << clube->getEmpates() << "\t" << clube->getDerrotas() << "\t"
+                  << clube->getGolsMarcados() << "\t" << clube->getGolsSofridos() << "\t" << clube->calcularSaldoGols() << std::endl;
     }
+
+    cout << endl;
 }

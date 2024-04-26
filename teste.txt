@@ -1,0 +1,19 @@
+Brasileirao
+                TIME	P	J	V	E	D	GP	GC	SG
+            Flamengo	15	5	5	0	0	10	4	6
+              Parana	6	5	2	0	3	9	8	1
+          RealPotosi	5	5	1	2	2	8	9	-1
+      UnionMaracaibo	2	5	0	2	3	8	14	-6
+
+Eliminatoria
+                TIME	P	J	V	E	D	GP	GC	SG
+               Chile	9	5	3	0	2	12	7	5
+             Equador	8	5	2	2	1	7	8	-1
+           Venezuela	6	5	2	0	3	7	10	-3
+           Argentina	5	5	1	2	2	5	6	-1
+
+Melhor do Brasileirao
+Club: Flamengo, Cidade: RiodeJaneiro
+
+Melhor da Eliminatoria
+Pais: Chile

@@ -14,8 +14,11 @@ int main() {
 
     vector<shared_ptr<Competicao>> competicoes;
 
-    shared_ptr<Competicao> brasileiraoPtr(new Brasileirao());
-    shared_ptr<Competicao> eliminatoiraPtr(new Eliminatoria());
+    shared_ptr<Competicao> brasileiraoPtr = make_shared<Brasileirao>();
+    shared_ptr<Competicao> eliminatoiraPtr = make_shared<Eliminatoria>();
+
+    competicoes.push_back(brasileiraoPtr);
+    competicoes.push_back(eliminatoiraPtr);
 
     competicoes.push_back(brasileiraoPtr);
     competicoes.push_back(eliminatoiraPtr);
@@ -24,16 +27,13 @@ int main() {
     shared_ptr<Time> time1, time2;
     int gols1, gols2;
 
-    for(unsigned int j = 0; j < competicoes.size(); j++) {
+    for(unsigned int j = 0; j < 2; j++) {
 
         cin >> njogos;
 
         for(auto i = 0; i < njogos; i++) {
 
-            competicoes[j] -> lerTimes(time1, time2, gols1, gols2);
-            auto t1 = competicoes[j] -> procurarInsertarTime(time1);
-            auto t2 = competicoes[j] -> procurarInsertarTime(time2);
-            competicoes[j] -> atualizarTimes(t1, t2, gols1, gols2);
+            competicoes[j] -> lerTimes();
 
         }
         competicoes[j] -> ordenarTimes();
@@ -41,7 +41,7 @@ int main() {
 
     }
 
-    for(unsigned int j = 0; j < competicoes.size(); j++) {
+    for(unsigned int j = 0; j < 2; j++) {
 
         competicoes[j] -> melhor();
 

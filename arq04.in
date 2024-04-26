@@ -1,0 +1,27 @@
+12
+ElNacional Quito	1 x 2	America MexicoDF
+Libertad Assuncao	1 x 0	Banfield Banfield
+Banfield Banfield	4 x 1	ElNacional Quito
+America MexicoDF	1 x 4	Libertad Assuncao
+ElNacional Quito	1 x 1	Libertad Assuncao
+America MexicoDF	4 x 0	Banfield Banfield
+Banfield Banfield	3 x 1	America MexicoDF
+Libertad Assuncao	1 x 0	ElNacional Quito
+ElNacional Quito	0 x 1	Banfield Banfield
+Libertad Assuncao	1 x 2	America MexicoDF
+Banfield Banfield	0 x 1	Libertad Assuncao
+America MexicoDF	2 x 1	ElNacional Quito
+12
+Chile	0 x 0	Brasil
+Peru	1 x 2	Mexico
+Brasil	4 x 0	Peru
+Mexico	2 x 0	Chile
+Peru	1 x 3	Chile
+Mexico	2 x 1	Brasil
+Chile	1 x 0	Peru
+Brasil	3 x 0	Mexico
+Chile	2 x 1	Mexico
+Peru	0 x 1	Brasil
+Brasil	2 x 2	Chile
+Mexico	2 x 0	Peru
+

@@ -4,11 +4,15 @@
 #include <string>
 #include "Time.hpp"
 
+using namespace std;
+
 class Selecao : public Time {
 
 public:
-    Selecao(std::string nome, int golsMarcados, int golsSofridos);
+    Selecao(string nome, int golsMarcados, int golsSofridos);
     ~Selecao(); // Destrutor
+
+    void atualizarTime(int gols1, int gols2) override;
 
 };
 
