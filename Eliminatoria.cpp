@@ -1,7 +1,7 @@
 #include "Eliminatoria.hpp"
 #include "Time.hpp"
 #include "Competicao.hpp"
-#include <iomanip> // Include the <iomanip> header to access std::setw
+#include <iomanip> // Include the <iomanip> header to access setw
 #include <string>
 #include <iostream>
 #include <memory>   
@@ -21,7 +21,7 @@ Eliminatoria::~Eliminatoria() {
 
 void Eliminatoria::ordenarTimes() {
     // Ordena o vetor de selecoes de acordo com os critérios de desempate
-    std::sort(selecoes.begin(), selecoes.end(), [](const std::shared_ptr<Selecao>& selecao1, const std::shared_ptr<Selecao>& selecao2) {
+    sort(selecoes.begin(), selecoes.end(), [](const shared_ptr<Selecao>& selecao1, const shared_ptr<Selecao>& selecao2) {
         if (selecao1->calcularPontos() != selecao2->calcularPontos()) {
             return selecao1->calcularPontos() > selecao2->calcularPontos();
         } else if (selecao1->getVitorias() != selecao2->getVitorias()) {
@@ -38,7 +38,7 @@ void Eliminatoria::ordenarTimes() {
 
 void Eliminatoria::melhor() {
 
-    cout << endl << "Melhor da Eliminatoria" << endl;
+    cout << "Melhor da Eliminatoria:" << endl;
     cout << "Pais: " << selecoes.front()->getNome() << endl;
 }
 
@@ -70,21 +70,36 @@ void Eliminatoria::procurarInsertarTime(string nome, int gol1, int gol2) {
         }
     }
     if (!encontrado) {
-        std::shared_ptr<Selecao> novaSelecao(new Selecao(nome, gol1, gol2));
+        shared_ptr<Selecao> novaSelecao(new Selecao(nome, gol1, gol2));
         selecoes.push_back(novaSelecao); // Adiciona no final do vetor
     }
 }
 
-void Eliminatoria::imprimirTabela() {
-    std::cout << "Eliminatoria" << std::endl;
-    std::cout << std::setw(20) << "TIME" << "\tP\tJ\tV\tE\tD\tGP\tGC\tSG" << std::endl;
-    for (const auto& selecoes : selecoes) {
-        std::cout << std::setw(20) << selecoes->getNome() << "\t" << selecoes->calcularPontos() << "\t"
-                  << (selecoes->getVitorias() + selecoes->getEmpates() + selecoes->getDerrotas()) << "\t"
-                  << selecoes->getVitorias() << "\t" << selecoes->getEmpates() << "\t" << selecoes->getDerrotas() << "\t"
-                  << selecoes->getGolsMarcados() << "\t" << selecoes->getGolsSofridos() << "\t" << selecoes->calcularSaldoGols() << std::endl;
+/*void Eliminatoria::imprimirTabela() {
+    cout << "Eliminatoria" << endl;
+    cout << setw(20) << "TIME" << "\tP\tJ\tV\tE\tD\tGP\tGC\tSG" << endl;
+    for (const auto& selecao : selecoes) {
+        cout << setw(20) << selecao->getNome() << "\t" << selecao->calcularPontos() << "\t"
+                  << setw(2) << (selecao->getVitorias() + selecao->getEmpates() + selecao->getDerrotas()) << "\t"
+                  << setw(2) << selecao->getVitorias() << "\t" << setw(2) << selecao->getEmpates() << "\t" 
+                  << setw(2) << selecao->getDerrotas() << "\t"
+                  << setw(2) << selecao->getGolsMarcados() << "\t" << setw(2) << selecao->getGolsSofridos() << "\t" 
+                  << setw(2) << selecao->calcularSaldoGols() << endl;
     }
+}*/
+
+void Eliminatoria::imprimirTabela(){
+    printf("Eliminatoria:\n");
+	printf("                TIME");
+	printf("\t P\t J\t V\t E\t D\t GP\t GC\t SG\n");
+
+	for (unsigned int i = 0; i < selecoes.size(); i++) {
+		selecoes[i]->imprime();
+	}
+
+	printf("\n");
 }
+
 
 
 

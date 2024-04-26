@@ -9,9 +9,21 @@ Time::Time(string nome, int golsMarcados, int golsSofridos) {
     this->nome = nome;
     this->golsMarcados = golsMarcados;
     this->golsSofridos = golsSofridos;
-    this->vitorias = 0;
-    this->empates = 0;
-    this->derrotas = 0;
+
+    if(golsMarcados > golsSofridos) {
+        this->vitorias = 1;
+        this->empates = 0;
+        this->derrotas = 0;
+    } else if(golsMarcados == golsSofridos) {
+        this->vitorias = 0;
+        this->empates = 1;
+        this->derrotas = 0;
+    } else {
+        this->vitorias = 0;
+        this->empates = 0;
+        this->derrotas = 1;
+    }
+
 };
 
 Time::Time() {
@@ -24,7 +36,7 @@ Time::Time() {
 };
 
 void Time::imprime() const {
-    std::cout << nome << "\t" << calcularPontos() << "\t" << (vitorias + empates + derrotas) << "\t" << vitorias << "\t" << empates << "\t" << derrotas << "\t" << golsMarcados << "\t" << golsSofridos << "\t" << calcularSaldoGols() << std::endl;
+printf("%20s\t%3d\t%3d\t%3d\t%3d\t%3d\t%3d\t%3d\t%3d\n",nome.c_str(), calcularPontos(), vitorias + empates + derrotas, vitorias, empates, derrotas, golsMarcados, golsSofridos, calcularSaldoGols());
 };
 
 int Time::getDerrotas() const {

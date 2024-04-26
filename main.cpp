@@ -20,12 +20,7 @@ int main() {
     competicoes.push_back(brasileiraoPtr);
     competicoes.push_back(eliminatoiraPtr);
 
-    competicoes.push_back(brasileiraoPtr);
-    competicoes.push_back(eliminatoiraPtr);
-
     int njogos;
-    shared_ptr<Time> time1, time2;
-    int gols1, gols2;
 
     for(unsigned int j = 0; j < 2; j++) {
 
@@ -41,11 +36,10 @@ int main() {
 
     }
 
-    for(unsigned int j = 0; j < 2; j++) {
-
-        competicoes[j] -> melhor();
-
-    }
+    competicoes[0] -> melhor();
+    cout << endl;
+    competicoes[1] -> melhor();
+    cout << endl;
 
     return 0;
 

@@ -15,7 +15,7 @@ Brasileirao::~Brasileirao() {
 
 void Brasileirao::ordenarTimes() {
     // Ordena o vetor clubes de acordo com os critérios
-    std::sort(clubes.begin(), clubes.end(), [](const std::shared_ptr<Clube>& clube1, const std::shared_ptr<Clube>& clube2) {
+    sort(clubes.begin(), clubes.end(), [](const shared_ptr<Clube>& clube1, const shared_ptr<Clube>& clube2) {
         // Compara os pontos
         if (clube1->calcularPontos() != clube2->calcularPontos()) {
             return clube1->calcularPontos() > clube2->calcularPontos();
@@ -39,7 +39,7 @@ void Brasileirao::ordenarTimes() {
 }
 
 void Brasileirao::melhor() {
-    cout << endl  << "Melhor do Brasileirao" << endl;
+    cout << "Melhor do Brasileirao:" << endl;
     cout << "Club: " << clubes.front()->getNome() << ", Cidade: " << clubes.front()->getCidade() << endl;
 
 }
@@ -71,21 +71,35 @@ void Brasileirao::procurarInsertarTime(string nome, string cidade, int gol1, int
         }
     }
     if (!encontrado) {
-        std::shared_ptr<Clube> novoClube(new Clube(nome, cidade, gol1, gol2));
+        shared_ptr<Clube> novoClube(new Clube(nome, cidade, gol1, gol2));
         clubes.push_back(novoClube); // Adiciona no final do vetor
     }
 }
 
 
-void Brasileirao::imprimirTabela() {
-    std::cout << "Brasileirao" << std::endl;
-    std::cout << std::setw(20) << "TIME" << "\tP\tJ\tV\tE\tD\tGP\tGC\tSG" << std::endl;
+/*void Brasileirao::imprimirTabela() {
+    cout << "Brasileirao" << endl;
+    cout << setw(15) << "TIME" << "\t" << "P\tJ\tV\tE\tD\tGP\tGC\tSG" << endl;
     for (const auto& clube : clubes) {
-        std::cout << std::setw(20) << clube->getNome() << "\t" << clube->calcularPontos() << "\t"
-                  << (clube->getVitorias() + clube->getEmpates() + clube->getDerrotas()) << "\t"
-                  << clube->getVitorias() << "\t" << clube->getEmpates() << "\t" << clube->getDerrotas() << "\t"
-                  << clube->getGolsMarcados() << "\t" << clube->getGolsSofridos() << "\t" << clube->calcularSaldoGols() << std::endl;
+        cout << setw(15) << clube->getNome() << "\t" << setw(2) << clube->calcularPontos() << "\t"
+                  << setw(2) << (clube->getVitorias() + clube->getEmpates() + clube->getDerrotas()) << "\t"
+                  << setw(2) << clube->getVitorias() << "\t" << setw(2) << clube->getEmpates() << "\t" 
+                  << setw(2) << clube->getDerrotas() << "\t"
+                  << setw(2) << clube->getGolsMarcados() << "\t" << setw(2) << clube->getGolsSofridos() << "\t" 
+                  << setw(2) << clube->calcularSaldoGols() << endl;
     }
-
     cout << endl;
+}*/
+
+void Brasileirao::imprimirTabela(){
+    printf("Brasileirao:\n");
+	printf("                TIME");
+	printf("\t P\t J\t V\t E\t D\t GP\t GC\t SG\n");
+
+	for (unsigned int i = 0; i < clubes.size(); i++) {
+		clubes[i]->imprime();
+	}
+
+	printf("\n");
 }
+
